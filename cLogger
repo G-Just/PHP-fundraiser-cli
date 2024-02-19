@@ -1,0 +1,11 @@
+<?php
+
+use App\routes\Routes;
+
+include 'app/autoloader/autoloader.php';
+
+while (1) {
+    Routes::run();
+    readline("Press ENTER to continue...");
+    pclose(popen('cls', 'w'));
+}
