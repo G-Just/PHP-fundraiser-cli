@@ -24,3 +24,6 @@ Fundraiser tracker, charity logger app. via php CLI.
 ```
 
 5. Read the instructions and use the app.
+___________________________________________________
+
+Once you execute any command, the database by the name of php_cli will be created.
