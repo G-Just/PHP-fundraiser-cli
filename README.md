@@ -1,6 +1,6 @@
 ## Project
 
-Fundraiser tracker. via php CLI.
+Fundraiser tracker, charity logger app. via php CLI.
 
 ## Quick start
 
