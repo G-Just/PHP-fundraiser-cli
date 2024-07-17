@@ -46,7 +46,7 @@ class DataBase
     public function all(): array
     {
         if ($this->table === 'charities') {
-            $sql = "SELECT c.id, c.name, c.email, IFNULL(SUM(d.donationAmount), 0) as collected, COUNT(d.donationAmount) as donationCount
+            $sql = "SELECT c.id, c.name, c.email, IFNULL(SUM(d.donationAmount), 0) as totalDonationsCollected, COUNT(d.donationAmount) as donationCount
             FROM charities as c
             LEFT JOIN donations as d
             ON c.id = d.charity_id
