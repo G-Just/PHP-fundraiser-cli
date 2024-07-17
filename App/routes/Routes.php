@@ -9,6 +9,9 @@ include __DIR__ . '/../banner.php';
 
 class Routes
 {
+    /**
+     * Displays the possible routes to the user
+     */
     public static function run()
     {
         echo BANNER;

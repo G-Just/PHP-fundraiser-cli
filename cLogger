@@ -4,6 +4,10 @@ use App\routes\Routes;
 
 include 'app/autoloader/autoloader.php';
 
+
+/**
+ * Entry point of the CLI program
+ */
 while (1) {
     Routes::run();
     readline("Press ENTER to continue...");

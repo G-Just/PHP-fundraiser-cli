@@ -10,7 +10,7 @@ use App\services\Validation;
 class Charity
 {
     /**
-     * Echoes a list of all the charities.
+     * Displays a list of all the charities.
      */
     public function list(): void
     {

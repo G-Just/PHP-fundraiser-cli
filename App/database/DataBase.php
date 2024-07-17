@@ -20,13 +20,18 @@ class DataBase
         $this->table = $table;
         $this->createTables();
     }
-
+    /**
+     * Checks if database exists and creates on if not.
+     */
     private function createDatabase(): void
     {
         $pdo = new PDO("mysql:host=localhost", 'root');
         $pdo->exec("CREATE DATABASE IF NOT EXISTS php_cli;");
     }
 
+    /**
+     * Checks if tables exist and creates them in the database if not.
+     */
     private function createTables(): void
     {
         $charityColumns = "id INT( 11 ) UNSIGNED AUTO_INCREMENT PRIMARY KEY, name VARCHAR( 128 ) NOT NULL, email VARCHAR( 128 ) NOT NULL";
@@ -40,7 +45,15 @@ class DataBase
      */
     public function all(): array
     {
-        $sql = "SELECT * FROM $this->table";
+        if ($this->table === 'charities') {
+            $sql = "SELECT c.id, c.name, c.email, IFNULL(SUM(d.donationAmount), 0) as collected, COUNT(d.donationAmount) as donationCount
+            FROM charities as c
+            LEFT JOIN donations as d
+            ON c.id = d.charity_id
+            GROUP BY c.id";
+        } else {
+            $sql = "SELECT * FROM $this->table";
+        }
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll();
