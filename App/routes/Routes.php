@@ -4,6 +4,7 @@ namespace App\routes;
 
 use App\controllers\Charity;
 use App\controllers\Donation;
+use App\services\Display;
 
 include __DIR__ . '/../banner.php';
 
@@ -32,7 +33,7 @@ class Routes
             'delete' => (new Charity)->delete(),
             'donate' => (new Donation)->donate(),
             'exit' => die(),
-            default => 'Action not recognized'
+            default => Display::out('Action not recognized')
         };
     }
 }
