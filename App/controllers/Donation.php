@@ -4,10 +4,23 @@ namespace App\controllers;
 
 use App\database\DataBase;
 use App\services\Display;
+use App\services\Table;
 use App\services\Validation;
 
 class Donation
 {
+    /**
+     * Displays a list of all the donations.
+     */
+    public function list(): void
+    {
+        $donations = (new DataBase('donations'))->all();
+        if ($donations) {
+            Table::donationTable($donations);
+        } else {
+            Display::out('No data found');
+        }
+    }
     /**
      * Creates a new donation and assigns it to the charity.
      */

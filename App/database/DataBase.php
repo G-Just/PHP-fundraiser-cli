@@ -8,16 +8,15 @@ use PDO;
 class DataBase
 {
     private $dsn = "mysql:host=localhost;dbname=php_cli;charset=utf8mb4";
-
     private $pdo;
     private $table;
 
     public function __construct(string $table)
     {
-        $this->createDatabase();
         $this->pdo = new PDO($this->dsn, 'root');
         $this->pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
         $this->table = $table;
+        $this->createDatabase();
         $this->createTables();
     }
     /**

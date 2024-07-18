@@ -6,7 +6,7 @@ use App\controllers\Charity;
 use App\controllers\Donation;
 use App\services\Display;
 
-include __DIR__ . '/../banner.php';
+include __DIR__ . '/../services/banner.php';
 
 class Routes
 {
@@ -18,6 +18,7 @@ class Routes
         echo BANNER;
         echo " List of available actions :\n\n";
         echo " - List all charities......................[\033[1;33m" . 'list' . "\033[0m]\n\n";
+        echo " - List all donations......................[\033[1;33m" . 'dlist' . "\033[0m]\n\n";
         echo " - Create a new charity....................[\033[1;33m" . 'create' . "\033[0m]\n\n";
         echo " - Edit an existing charity................[\033[1;33m" . 'edit' . "\033[0m]\n\n";
         echo " - Delete a charity........................[\033[1;33m" . 'delete' . "\033[0m]\n\n";
@@ -28,6 +29,7 @@ class Routes
 
         return match ($selected) {
             'list' => (new Charity)->list(),
+            'dlist' => (new Donation)->list(),
             'create' => (new Charity)->create(),
             'edit' => (new Charity)->edit(),
             'delete' => (new Charity)->delete(),
